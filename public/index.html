@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cleratian School Portal</title>
+    <meta name="description" content="Student portal for results, hostel booking, e-learning, online classes, CBT exams, and attendance." />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="portal-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="brand-mark">CU</span>
+          <div>
+            <p>Cleratian</p>
+            <strong>School Portal</strong>
+          </div>
+        </div>
+        <nav aria-label="Portal navigation">
+          <button class="nav-item active" data-view="dashboard">Dashboard</button>
+          <button class="nav-item" data-view="students">Students</button>
+          <button class="nav-item" data-view="results">Results</button>
+          <button class="nav-item" data-view="hostel">Hostel</button>
+          <button class="nav-item" data-view="elearning">E-Learning</button>
+          <button class="nav-item" data-view="classes">Online Class</button>
+          <button class="nav-item" data-view="cbt">CBT Exam</button>
+          <button class="nav-item" data-view="attendance">Attendance</button>
+        </nav>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Student Portal</p>
+            <h1 id="pageTitle">Dashboard</h1>
+          </div>
+          <div class="student-card">
+            <span>Student</span>
+            <strong id="studentName">Amara Okafor</strong>
+          </div>
+        </header>
+
+        <section class="view active" id="dashboard">
+          <div class="stats-grid">
+            <article class="stat-card">
+              <span>Managed Students</span>
+              <strong id="studentCount">0</strong>
+              <p>Active student records</p>
+            </article>
+            <article class="stat-card">
+              <span>Current GPA</span>
+              <strong>4.32</strong>
+              <p>Excellent academic standing</p>
+            </article>
+            <article class="stat-card">
+              <span>Attendance</span>
+              <strong id="attendanceRate">92%</strong>
+              <p>Above required threshold</p>
+            </article>
+            <article class="stat-card">
+              <span>CBT Status</span>
+              <strong id="cbtStatus">Pending</strong>
+              <p>Computer Science test available</p>
+            </article>
+            <article class="stat-card">
+              <span>Hostel</span>
+              <strong id="hostelStatus">Not Booked</strong>
+              <p>Rooms available this session</p>
+            </article>
+          </div>
+
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Today</p>
+                <h2>Portal Overview</h2>
+              </div>
+            </div>
+            <div class="overview-grid">
+              <article>
+                <h3>Student Management</h3>
+                <p>Add, update, delete, and search student records from the Students module.</p>
+              </article>
+              <article>
+                <h3>Next Online Class</h3>
+                <p>Database Systems with Dr. Hassan at 10:00 AM.</p>
+              </article>
+              <article>
+                <h3>Latest Result</h3>
+                <p>Software Engineering: A, 92%.</p>
+              </article>
+              <article>
+                <h3>E-Learning Progress</h3>
+                <p>3 of 5 course modules completed.</p>
+              </article>
+            </div>
+          </section>
+        </section>
+
+        <section class="view" id="students">
+          <section class="split-layout">
+            <div class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Management</p>
+                  <h2 id="studentFormTitle">Add Student</h2>
+                </div>
+              </div>
+              <form id="studentForm" class="form-grid">
+                <input type="hidden" name="id" />
+                <label>Full Name
+                  <input name="name" placeholder="Student name" required />
+                </label>
+                <label>Email
+                  <input name="email" type="email" placeholder="student@example.edu" required />
+                </label>
+                <label>Course
+                  <input name="course" placeholder="Course of study" required />
+                </label>
+                <label>Grade
+                  <input name="grade" placeholder="A, B+, C..." required />
+                </label>
+                <label>Phone
+                  <input name="phone" placeholder="+234..." />
+                </label>
+                <label>Status
+                  <select name="status" required>
+                    <option>Active</option>
+                    <option>On Leave</option>
+                    <option>Graduated</option>
+                    <option>Inactive</option>
+                  </select>
+                </label>
+                <div class="form-actions">
+                  <button type="submit">Save Student</button>
+                  <button class="secondary-button" id="resetStudentForm" type="button">Clear</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Directory</p>
+                  <h2>Student Records</h2>
+                </div>
+                <input id="studentSearch" type="search" placeholder="Search records..." />
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Course</th>
+                      <th>Grade</th>
+                      <th>Status</th>
+                      <th>Contact</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="studentsTable"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section class="view" id="results">
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Academics</p>
+                <h2>Semester Results</h2>
+              </div>
+              <select id="semesterFilter" aria-label="Filter results by semester">
+                <option value="all">All Semesters</option>
+                <option>2026 First Semester</option>
+                <option>2025 Second Semester</option>
+              </select>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Course</th>
+                    <th>Code</th>
+                    <th>Score</th>
+                    <th>Grade</th>
+                    <th>Semester</th>
+                  </tr>
+                </thead>
+                <tbody id="resultsTable"></tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+
+        <section class="view" id="hostel">
+          <section class="split-layout">
+            <div class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Accommodation</p>
+                  <h2>Book Hostel</h2>
+                </div>
+              </div>
+              <form id="hostelForm" class="form-grid">
+                <label>Hostel Block
+                  <select name="block" required>
+                    <option value="">Select block</option>
+                    <option>Block A - Female</option>
+                    <option>Block B - Male</option>
+                    <option>Block C - Postgraduate</option>
+                  </select>
+                </label>
+                <label>Room Type
+                  <select name="roomType" required>
+                    <option value="">Select type</option>
+                    <option>Single Room</option>
+                    <option>Two-Person Room</option>
+                    <option>Four-Person Room</option>
+                  </select>
+                </label>
+                <label>Session
+                  <input name="session" value="2026/2027" required />
+                </label>
+                <button type="submit">Submit Booking</button>
+              </form>
+            </div>
+            <div class="panel highlight-panel">
+              <p class="eyebrow">Booking Status</p>
+              <h2 id="bookingSummary">No hostel booked yet</h2>
+              <p id="bookingDetail">Choose a block and room type to reserve accommodation for the session.</p>
+            </div>
+          </section>
+        </section>
+
+        <section class="view" id="elearning">
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Learning</p>
+                <h2>E-Learning Modules</h2>
+              </div>
+            </div>
+            <div class="course-grid" id="courseGrid"></div>
+          </section>
+        </section>
+
+        <section class="view" id="classes">
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Virtual Learning</p>
+                <h2>Online Classes</h2>
+              </div>
+            </div>
+            <div class="class-list" id="classList"></div>
+          </section>
+        </section>
+
+        <section class="view" id="cbt">
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Assessment</p>
+                <h2>CBT Exam</h2>
+              </div>
+              <span class="timer" id="examTimer">10:00</span>
+            </div>
+            <form id="examForm" class="exam-form"></form>
+          </section>
+        </section>
+
+        <section class="view" id="attendance">
+          <section class="split-layout">
+            <div class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Presence</p>
+                  <h2>Mark Attendance</h2>
+                </div>
+              </div>
+              <form id="attendanceForm" class="form-grid">
+                <label>Course
+                  <select name="course" required>
+                    <option>Database Systems</option>
+                    <option>Software Engineering</option>
+                    <option>Web Development</option>
+                  </select>
+                </label>
+                <label>Attendance Code
+                  <input name="code" placeholder="Enter class code" required />
+                </label>
+                <button type="submit">Mark Attendance</button>
+              </form>
+            </div>
+            <div class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">History</p>
+                  <h2>Attendance Log</h2>
+                </div>
+              </div>
+              <div class="activity-list" id="attendanceLog"></div>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

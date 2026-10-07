@@ -1,0 +1,21 @@
+{
+  "name": "cleratian-combined-school-portal",
+  "version": "1.0.0",
+  "description": "A combined school portal and student management system with records CRUD, results, hostel booking, e-learning, online classes, CBT exams, and attendance.",
+  "main": "server.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "school-portal",
+    "student-management",
+    "student-portal",
+    "cbt",
+    "elearning",
+    "attendance"
+  ],
+  "license": "MIT"
+}

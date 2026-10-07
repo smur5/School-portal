@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: cleratian-school-portal
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: APP_DOMAIN
+        value: cleratianuniversitymanagement.com
+      - key: NODE_ENV
+        value: production
